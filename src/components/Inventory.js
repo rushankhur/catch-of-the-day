@@ -1,8 +1,16 @@
 import React from 'react';
 
-const Inventory = () => {
+import AddFishForm from './AddFishForm';
+
+const Inventory = ({ addFish, loadSampleFishes }) => {
     return (
-        <div>Inventory</div>
+        <div className="inventory">
+            <h2>Inventory</h2>
+            <AddFishForm addFish={addFish} />
+            <button onClick={loadSampleFishes}>
+                Load Sample Fishes
+            </button>
+        </div>
     );
 }
 
