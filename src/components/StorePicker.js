@@ -18,7 +18,7 @@ const StorePicker = props => {
                 placeholder="Store Name" 
                 value={storeName} 
                 onChange={e => setStoreName(e.target.value)} 
-                defaultValue={getFunName()} 
+                // defaultValue={getFunName()} 
             />
             <button type="submit">Visit Store</button>
         </form>

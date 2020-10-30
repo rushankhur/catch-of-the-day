@@ -12,10 +12,15 @@ const App = () => {
 
     const addFish = fish => {
         // 1. Take a COPY of existing state
-        const fishes = {...fishes};
+        //const fishes = {...fishes};
         // 2. Add a new fish to to fishes variable
-        fishes[`fish${Date.now()}`] = fish; // create a fish with a unique key
-        setFishes(fishes);
+        //fishes[`fish${Date.now()}`] = fish; // create a fish with a unique key
+        //setFishes(fishes);
+
+        setFishes({
+            ...fishes,
+            [`fish${Date.now()}`]: fish
+        })
     }
 
     const loadSampleFishes = () => {
@@ -23,11 +28,17 @@ const App = () => {
     }
 
     const addToOrder = (key) => {
-        const fishOrder = {...order};
-        // update the order or add 1
-        fishOrder[key] = fishOrder[key] + 1 || 1;
-        setOrder(fishOrder);
+        // const fishOrder = {...order};
+        // // update the order or add 1
+        // fishOrder[key] = fishOrder[key] + 1 || 1;
+        // setOrder(fishOrder);
+        setOrder({
+            ...order,
+            [key]: order[key] ? order[key] + 1 : 1
+        })
     }
+    //order.key // order.key
+    //order[key] // order.fish1
     
 
     return (
@@ -45,7 +56,7 @@ const App = () => {
                     }
                 </ul>
             </div>
-            <Order />
+            <Order fishes={fishes} order={order} />
             <Inventory 
                 addFish={addFish} 
                 loadSampleFishes={loadSampleFishes} 
